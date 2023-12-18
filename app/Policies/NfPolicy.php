@@ -21,7 +21,7 @@ class NfPolicy
      */
     public function view(User $user, Nf $nf): bool
     {
-        //
+        return $user->id === $nf->user_id;
     }
 
     /**
@@ -37,7 +37,7 @@ class NfPolicy
      */
     public function update(User $user, Nf $nf): bool
     {
-        //
+        return $user->id === $nf->user_id;
     }
 
     /**
