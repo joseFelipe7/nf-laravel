@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NfController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,10 +15,14 @@ use App\Http\Controllers\UserController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+/* Router Auth */
+Route::prefix('auth')->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    // Route::get('/me', [AuthController::class, 'me']);  
+});
+
 Route::apiResource('/users', UserController::class);
-// Route::get('/', function () {
-//     // return response()->json(array("message"=>"Api ok"), 200);
-// });
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::apiResource('/nf', NfController::class);

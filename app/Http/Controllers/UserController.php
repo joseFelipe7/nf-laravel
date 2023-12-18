@@ -14,6 +14,7 @@ class UserController extends Controller
         $perPage = $request->per_page ?? 15;
 
         $user = User::paginate($perPage);
+        
         return UserResource::collection($user);
     }
     public function store(StoreUserRequest $request){
