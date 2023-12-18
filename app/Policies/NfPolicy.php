@@ -45,7 +45,7 @@ class NfPolicy
      */
     public function delete(User $user, Nf $nf): bool
     {
-        //
+        return $user->id === $nf->user_id;
     }
 
     /**
@@ -53,7 +53,7 @@ class NfPolicy
      */
     public function restore(User $user, Nf $nf): bool
     {
-        //
+        return $user->id === $nf->user_id;
     }
 
     /**

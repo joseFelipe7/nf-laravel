@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Nf;
 use App\Http\Resources\NfResource;
 use App\Http\Requests\StoreNfRequest;
+use App\Http\Requests\UpdateNfRequest;
 
 class NfController extends Controller
 {
@@ -39,5 +40,24 @@ class NfController extends Controller
 
         return new NfResource($nf);
         
+    }
+    public function update(UpdateNfRequest $request, string $id){
+        $nf = Nf::findOrFail($id);
+        $this->authorize('update', $nf);
+       
+        $data = $request->validated();
+      
+        $nf->update($data);
+
+        return new NfResource($nf);
+    }
+
+    public function destroy(string $id){
+        $nf = Nf::findOrFail($id);
+        $this->authorize('delete', $nf);
+
+        $nf->delete();
+
+        return response()->json([], 204);
     }
 }
