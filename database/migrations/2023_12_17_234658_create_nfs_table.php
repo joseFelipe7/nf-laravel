@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('delivery_cnpj', 14);
             $table->string('delivery_name', 100);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             

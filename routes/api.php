@@ -13,10 +13,10 @@ use App\Http\Controllers\UserController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::apiResource('users', UserController::class);
-Route::get('/', function () {
-    return response()->json(array("message"=>"Api ok"), 200);
-});
+Route::apiResource('/users', UserController::class);
+// Route::get('/', function () {
+//     // return response()->json(array("message"=>"Api ok"), 200);
+// });
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
