@@ -30,6 +30,7 @@ services:
     # db mysql
     db:
         image: mysql:5.7.22
+        container_name: db_nf_laravel
         restart: unless-stopped
         environment:
             MYSQL_ROOT_HOST: "0.0.0.0"
@@ -42,7 +43,7 @@ services:
         ports:
             - "3388:3306"
         networks:
-            - nf-laravel
+            - nf_laravel
 
     # redis
     redis:
