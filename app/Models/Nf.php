@@ -14,7 +14,7 @@ class Nf extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['value', 'date_issue', 'sender_cnpj', 'sender_name', 'delivery_cnpj', 'delivery_name'];
+    protected $fillable = ['user_id', 'nf_code', 'value', 'date_issue', 'sender_cnpj', 'sender_name', 'delivery_cnpj', 'delivery_name'];
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');

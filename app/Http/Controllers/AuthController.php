@@ -44,7 +44,6 @@ class AuthController extends Controller
 
     public function refresh(){
         return response()->json([
-            'status' => 'success',
             'data' => new UserResource(Auth::user()),
             'authorisation' => [
                 'token' => Auth::refresh(),
