@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use App\Rules\IsCnpj;
 
 class UpdateNfRequest extends FormRequest
@@ -24,6 +25,7 @@ class UpdateNfRequest extends FormRequest
     {
         return [
             'value' => ['nullable', 'decimal:2', 'min:0.1'], 
+            'nf_code' => ['nullable', 'string', 'size:9', Rule::unique('nfs')->ignore($this->route('nf')) ],
             'date_issue' => ['nullable', 'date', "before_or_equal:" . now()->toDateString()], 
             'sender_cnpj' => ['nullable', new IsCnpj],
             'sender_name' => ['nullable', 'string',  'min:1', 'max:100'], 

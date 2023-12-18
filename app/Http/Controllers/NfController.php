@@ -7,6 +7,8 @@ use App\Models\Nf;
 use App\Http\Resources\NfResource;
 use App\Http\Requests\StoreNfRequest;
 use App\Http\Requests\UpdateNfRequest;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\UserStoreNfNotification;
 
 class NfController extends Controller
 {
@@ -27,9 +29,11 @@ class NfController extends Controller
         $data = $request->validated();
         
         $data['user_id'] = $this->user['id'];
-        $data['nf_code'] = "123456789";
         
         $nf = Nf::create($data);
+
+        auth()->user()->notify(new UserStoreNfNotification($nf));
+
         return new NfResource($nf);
     }
 
@@ -37,7 +41,7 @@ class NfController extends Controller
         $nf = Nf::findOrFail($id);
     
         $this->authorize('view', $nf);
-
+       
         return new NfResource($nf);
         
     }

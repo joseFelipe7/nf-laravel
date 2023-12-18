@@ -24,6 +24,7 @@ class StoreNfRequest extends FormRequest
     {
         return [
             'value' => ['required', 'decimal:2', 'min:0.1'], 
+            'nf_code' => ['required', 'string', 'size:9', 'unique:nfs'],
             'date_issue' => ['required', 'date', "before_or_equal:" . now()->toDateString()], 
             'sender_cnpj' => ['required', new IsCnpj],
             'sender_name' => ['required', 'string', 'min:1', 'max:100'], 
