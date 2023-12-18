@@ -44,7 +44,19 @@ services:
             - "3388:3306"
         networks:
             - nf_laravel
-
+    test_db:
+        image: mysql:5.7.22
+        container_name: db_test_nf_laravel
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE:-laravel}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+            MYSQL_PASSWORD: ${DB_PASSWORD:-userpass}
+            MYSQL_USER: ${DB_USERNAME:-username}
+            MYSQL_ROOT_HOST: "%"
+        volumes:
+            - ./.docker/mysql_test/dbdata:/var/lib/mysql
+        networks:
+            - nf_laravel
     # redis
     redis:
         image: redis:latest
