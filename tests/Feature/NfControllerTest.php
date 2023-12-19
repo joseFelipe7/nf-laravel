@@ -34,6 +34,13 @@ class NfControllerTest extends TestCase
         $response->assertStatus(200);
         $this->token = $response->original['authorisation']['token'];
     }
+    public function tearDown(): void
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        Nf::truncate();
+        User::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');        
+    }
     public function test_nf_index_get_endpoint(): void
     {
         $responseNf = $this->withHeaders([

@@ -13,10 +13,20 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'name' => 'Tester '.Str::random(6),
-            'email' => 'tester@email.com',
-            'password' => bcrypt('123456'),
-            'created_at' => Carbon::now(),
+            [
+                'name' => 'Tester '.Str::random(6),
+                'email' => 'tester@email.com',
+                'is_admin' => 0,
+                'password' => bcrypt('123456'),
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'Admin '.Str::random(6),
+                'email' => 'admin_tester@email.com',
+                'is_admin' => 1,
+                'password' => bcrypt('123456'),
+                'created_at' => Carbon::now(),
+            ]
         ]);
         
     }

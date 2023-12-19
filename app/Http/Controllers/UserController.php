@@ -10,10 +10,17 @@ use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
-    public function index(Request $request){
-        $perPage = $request->per_page ?? 15;
+    public function __construct(){
+        $this->middleware('auth:api', ['except' => ['store']]);
+        if(auth()->user()) $this->user = auth()->user()->toArray();
 
+    }
+    public function index(Request $request){
+        $this->authorize('admin', auth()->user());
+
+        $perPage = $request->per_page ?? 15;
         $user = User::paginate($perPage);
+
         return UserResource::collection($user);
     }
     public function store(StoreUserRequest $request){
@@ -26,11 +33,15 @@ class UserController extends Controller
 
     }
     public function show(string $id){
+        $this->authorize('admin', auth()->user());
+
         $user = User::findOrFail($id);
         return new UserResource($user);
     }
     
     public function update(UpdateUserRequest $request, string $id){
+        $this->authorize('admin', auth()->user());
+
         $user = User::findOrFail($id);
         $data = $request->validated();
         if ($request->password) $data['password'] = bcrypt($request->password);
@@ -40,6 +51,8 @@ class UserController extends Controller
         return new UserResource($user);
     }
     public function destroy(string $id){
+        $this->authorize('admin', auth()->user());
+
         $user = User::findOrFail($id);
         $user->delete();
 

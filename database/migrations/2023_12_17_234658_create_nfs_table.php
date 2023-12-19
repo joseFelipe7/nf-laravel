@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('nfs', function (Blueprint $table) {
             $table->id();         
             $table->bigInteger('user_id')->unsigned()->index();
-            $table->string('nf_code', 9);
+            $table->string('nf_code', 9)->unique();
             $table->float('value');
             $table->date('date_issue');
             $table->string('sender_cnpj', 14);
