@@ -27,7 +27,6 @@
 
 ## 🚀 Bônus realizados do Desafio:<br/>
 🎉**Docker**🐋<br/> 
-🎉**Pipeline no Github Actions (CI/CD)**<br/>
 
 ## 🚀 API
 -> Endpoints do **CRUD dos Usuários** do sistema:
@@ -112,7 +111,7 @@ php artisan test
 ```
 <br/><br/>
 # 🚀 Acesse...
-- [Documentação Postman aqui](https://laravel.com/docs/routing).
+- [Documentação Postman aqui](https://documenter.getpostman.com/view/12476316/2s9YkoeMhB#a7bd3a9a-188d-403c-a777-3e87ec85c892).
 
 <p align="center">
     <a href="https://laravel.com" target="_blank"><img src="https://www.azapfy.com.br/wp-content/uploads/2020/08/NOVA-LOGO-AZAPFY_03-212x62.png" width="150" alt="Laravel Logo"></a>
