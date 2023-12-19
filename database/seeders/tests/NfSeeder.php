@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class NfSeeder extends Seeder
 {
@@ -23,7 +24,8 @@ class NfSeeder extends Seeder
                 'sender_cnpj' => '92314143000196',
                 'sender_name' => 'Remetente 92314143000196',
                 'delivery_cnpj' => '79858926000172',
-                'delivery_name' => 'Transportador 79858926000172'
+                'delivery_name' => 'Transportador 79858926000172',
+                'created_at' => Carbon::now(),
             ],
             [ 
                 'user_id' => 1,
@@ -33,7 +35,8 @@ class NfSeeder extends Seeder
                 'sender_cnpj' => '04980424000110',
                 'sender_name' => 'Remetente 04980424000110',
                 'delivery_cnpj' => '05986789000115',
-                'delivery_name' => 'Transportador 05986789000115'
+                'delivery_name' => 'Transportador 05986789000115',
+                'created_at' => Carbon::now(),
             ],
         ]);
     }

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
             
             //numero - Identificador único do documento String Deve possuir exatos 9 dígitos.
             //valor  - Valor da nota fiscal Numérico Precisa ser maior que 0.
