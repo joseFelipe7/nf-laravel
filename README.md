@@ -27,6 +27,7 @@
 
 ## 🚀 Bônus realizados do Desafio:<br/>
 🎉**Docker**🐋<br/> 
+🎉**Pipeline no Github Actions (CI/CD)**<br/>
 
 ## 🚀 API
 -> Endpoints do **CRUD dos Usuários** do sistema:
