@@ -11,6 +11,10 @@ use Illuminate\Testing\Fluent\AssertableJson;
 class UserControllerTest extends TestCase
 {
     use RefreshDatabase;
+    public function test_that_true_is_true(): void
+    {
+        $this->assertTrue(true);
+    }
     // public function test_user_index_get_endpoint(): void
     // {
     //     // $users = User::factory()->create();
